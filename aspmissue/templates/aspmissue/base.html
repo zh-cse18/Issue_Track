@@ -1,0 +1,386 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Walton Blackbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="https://coderthemes.com/ubold/layouts/assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Plugins css -->
+    <link href="{% static 'assets/libs/flatpickr/flatpickr.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/bootstrap-material.min.css'%}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="{% static 'assets/css/app-material.min.css' %}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="{% static 'assets/css/bootstrap-material-dark.min.css' %}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
+    <link href="{% static 'assets/css/app-material-dark.min.css' %}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/datatable-master/css/datatable.min.css' %}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/datatable-master/css/datatable-bootstrap.min.css' %}" media="screen">
+
+    <script href="{% static 'assets/js/jquery.js' %}"></script>
+
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+    <script type="text/javascript" src="{% static 'assets/datatable-master/js/datatable.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/datatable-master/js/datatable.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/datatable-master/js/datatable.jquery.min.js' %}"></script>
+
+</head>
+
+<body class="loading" data-layout='{"mode": "dark", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "dark", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
+
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <div class="navbar-custom">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <div class="logo-box">
+                <h3 >Black Box</h3>
+
+            </div>
+        </div>
+    </div>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left-side-menu">
+
+        <div class="h-100" data-simplebar>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+
+                <ul id="side-menu">
+
+                    <li class="menu-title">Navigation</li>
+
+                    <li>
+
+                        <span class="iconify" data-icon="mdi-view-dashboard-outline" data-inline="false"></span>
+
+                        <span>  <a href="{% url 'aspmissue:index' %}">Dashboards </a> </span>
+
+
+                    </li>
+                    <li>
+
+                        <span class="iconify" data-icon="mdi-view-dashboard-outline" data-inline="false"></span>
+
+                        <span>  <a href="{% url 'aspmissue:Weekly_report' %}">Weekly Report </a> </span>
+
+
+                    </li>
+
+
+
+
+                    <span class="iconify" data-icon="mdi-view-dashboard-outline"></span>
+                    <a href="{% url 'aspmissue:marketIssue' %}" > Market Issue</a>
+
+                    <li>
+                        {% block Search %}
+
+
+                        {% endblock %}
+
+
+                    </li>
+
+
+
+
+
+                </ul>
+
+            </div>
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
+        </div>
+        <!-- Sidebar -left -->
+
+    </div>
+
+
+    <div class="content-page">
+        {% block content %}
+
+
+        {% endblock %}
+
+        {% block WeeklyReport %}
+
+
+        {%endblock%}
+
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        2015 - <script>document.write(new Date().getFullYear())</script> Walton by <a href="#">Software QC</a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-right footer-links d-none d-sm-block">
+                            <a href="javascript:void(0);">About Us</a>
+                            <a href="javascript:void(0);">Help</a>
+                            <a href="javascript:void(0);">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+<div class="right-bar">
+    <div data-simplebar class="h-100">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-bordered nav-justified" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link py-2" data-toggle="tab" href="#chat-tab" role="tab">
+                    <i class="mdi mdi-message-text d-block font-22 my-1"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link py-2" data-toggle="tab" href="#tasks-tab" role="tab">
+                    <i class="mdi mdi-format-list-checkbox d-block font-22 my-1"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link py-2 active" data-toggle="tab" href="#settings-tab" role="tab">
+                    <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content pt-0">
+            <div class="tab-pane" id="chat-tab" role="tabpanel">
+
+
+
+
+                <h6 class="font-weight-medium px-3 mt-2 text-uppercase">Group Chats</h6>
+
+                <div class="p-2">
+                </div>
+
+                <h6 class="font-weight-medium px-3 mt-3 text-uppercase">Favourites <a href="javascript: void(0);" class="font-18 text-danger"><i class="float-right mdi mdi-plus-circle"></i></a></h6>
+
+                <div class="p-2">
+
+                </div>
+
+                <h6 class="font-weight-medium px-3 mt-3 text-uppercase">Other Chats <a href="javascript: void(0);" class="font-18 text-danger"><i class="float-right mdi mdi-plus-circle"></i></a></h6>
+
+                <div class="p-2 pb-4">
+
+                    <div class="text-center mt-3">
+                        <a href="javascript:void(0);" class="btn btn-sm btn-white">
+                            <i class="mdi mdi-spin mdi-loading mr-2"></i>
+                            Load more
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="tab-pane" id="tasks-tab" role="tabpanel">
+                <div class="p-2">
+                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                        <p class="text-muted mb-0">Sales Reporting<span class="float-right">12%</span></p>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 12%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </a>
+
+                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                        <p class="text-muted mb-0">Redesign Website<span class="float-right">67%</span></p>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </a>
+
+                    <a href="javascript: void(0);" class="text-reset item-hovered d-block p-2">
+                        <p class="text-muted mb-0">New Admin Design<span class="float-right">84%</span></p>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 84%" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+            <div class="tab-pane active" id="settings-tab" role="tabpanel">
+                <h6 class="font-weight-medium px-3 m-0 py-2 font-13 text-uppercase bg-light">
+                    <span class="d-block py-1">Theme Settings</span>
+                </h6>
+
+                <div class="p-3">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                    </div>
+
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Color Scheme</h6>
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="color-scheme-mode" value="light"
+                               id="light-mode-check" checked />
+                        <label class="custom-control-label" for="light-mode-check">Light Mode</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="color-scheme-mode" value="dark"
+                               id="dark-mode-check" />
+                        <label class="custom-control-label" for="dark-mode-check">Dark Mode</label>
+                    </div>
+
+                    <!-- Width -->
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Width</h6>
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="width" value="fluid" id="fluid-check" checked />
+                        <label class="custom-control-label" for="fluid-check">Fluid</label>
+                    </div>
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="width" value="boxed" id="boxed-check" />
+                        <label class="custom-control-label" for="boxed-check">Boxed</label>
+                    </div>
+
+                    <!-- Menu positions -->
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Menus (Leftsidebar and Topbar) Positon</h6>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="menus-position" value="fixed" id="fixed-check"
+                               checked />
+                        <label class="custom-control-label" for="fixed-check">Fixed</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="menus-position" value="scrollable"
+                               id="scrollable-check" />
+                        <label class="custom-control-label" for="scrollable-check">Scrollable</label>
+                    </div>
+
+                    <!-- Left Sidebar-->
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Left Sidebar Color</h6>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="light" id="light-check" checked />
+                        <label class="custom-control-label" for="light-check">Light</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="dark" id="dark-check" />
+                        <label class="custom-control-label" for="dark-check">Dark</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="brand" id="brand-check" />
+                        <label class="custom-control-label" for="brand-check">Brand</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-color" value="gradient" id="gradient-check" />
+                        <label class="custom-control-label" for="gradient-check">Gradient</label>
+                    </div>
+
+                    <!-- size -->
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Left Sidebar Size</h6>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-size" value="default"
+                               id="default-size-check" checked />
+                        <label class="custom-control-label" for="default-size-check">Default</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-size" value="condensed"
+                               id="condensed-check" />
+                        <label class="custom-control-label" for="condensed-check">Condensed <small>(Extra Small size)</small></label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="leftsidebar-size" value="compact"
+                               id="compact-check" />
+                        <label class="custom-control-label" for="compact-check">Compact <small>(Small size)</small></label>
+                    </div>
+
+                    <!-- User info -->
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Sidebar User Info</h6>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="checkbox" class="custom-control-input" name="leftsidebar-user" value="fixed" id="sidebaruser-check" />
+                        <label class="custom-control-label" for="sidebaruser-check">Enable</label>
+                    </div>
+
+
+                    <!-- Topbar -->
+                    <h6 class="font-weight-medium font-14 mt-4 mb-2 pb-1">Topbar</h6>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="topbar-color" value="dark" id="darktopbar-check"
+                               checked />
+                        <label class="custom-control-label" for="darktopbar-check">Dark</label>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-1">
+                        <input type="radio" class="custom-control-input" name="topbar-color" value="light" id="lighttopbar-check" />
+                        <label class="custom-control-label" for="lighttopbar-check">Light</label>
+                    </div>
+
+
+                    <button class="btn btn-primary btn-block mt-4" id="resetBtn">Reset to Default</button>
+                    q
+
+                </div>
+
+            </div>
+        </div>
+
+    </div> <!-- end slimscroll-menu-->
+</div>
+
+<div class="rightbar-overlay"></div>
+
+
+<script src="{% static 'assets/js/vendor.min.js' %}"></script>
+<script src="{% static 'assets/libs/flatpickr/flatpickr.min.js' %}"></script>
+<script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/libs/selectize/js/standalone/selectize.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/dashboard-1.init.js' %}"></script>
+
+<script src="{% static 'assets/libs/footable/footable.all.min.js' %}"></script>
+
+<!-- Init js -->
+
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+
+</body>
+
+</html>
