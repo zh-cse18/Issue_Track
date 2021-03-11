@@ -44,6 +44,9 @@ def modelDetail(request, id):
     issue_analysis = IssueAnalysis.objects.filter(model=modeltest)
 
     issue_summary = IssueSummary.objects.filter(model=modeltest)
+    print(issue_summary)
+
+
     context['issue_summary'] = issue_summary
     context['issue_detail'] = issue_detail
     context['issue_analysis'] = issue_analysis
@@ -69,7 +72,7 @@ def xcel_view(request, id):
     columns = ['Model Name', 'Software Version', 'Total Issue Number', 'Expected Date By Pm', 'Actual Date By Pm',
                'FeedBack Expected Date', 'FeedBack Actual Date', 'New Issue', 'Re-open Issue', 'closed Issue',
                'supplier_can_not_fixed', 'issue clsoed by pm', 'Is Mp',
-               'Delay By', 'Delay PM', 'Delay QC','Remarks']
+               'Delay By', 'Delay PM', 'Delay QC','New version after','Remarks']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -81,7 +84,7 @@ def xcel_view(request, id):
                                                              'feedback_expected_date', 'feedback_actual_date',
                                                              'new_issue', 'reopen_issue', 'closed_issue',
                                                              'supplier_can_not_fixed', 'issue_clsoed_by_pm',
-                                                             'is_mp', 'delay', 'delay_by_pm', 'delay_by_qc','remarks')
+                                                             'is_mp', 'delay', 'delay_by_pm', 'delay_by_qc','diff_two_version','remarks')
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):

@@ -130,7 +130,7 @@ class MajorIssue(models.Model):
 
     )
 
-    issue =MultiSelectField(max_length=200,choices=total_issue,blank=True,null=True)
+    issue =MultiSelectField(max_length=2000,choices=total_issue,blank=True,null=True)
     def __str__(self):
         return self.modelname.modelname
 
@@ -140,6 +140,7 @@ class IssueSummary(models.Model):
     issue_analysis_version_wise = models.CharField(max_length=200, null=True)
     total_issue = models.IntegerField(max_length=2000, null=True)
     expected_software_date = models.DateField(null=True, blank=True)
+    pre_version_actual_software_date =  models.DateField(null=True, blank=True)
     actual_software_date = models.DateField(null=True)
     feedback_expected_date = models.DateField(null=True)
     feedback_actual_date = models.DateField(null=True)
@@ -159,6 +160,8 @@ class IssueSummary(models.Model):
     delay_by_pm = models.CharField(max_length=200, null=True, blank=True)
     delay_by_qc = models.CharField(max_length=200, null=True, blank=True)	
     mejor_issue = models.ForeignKey(MajorIssue, on_delete=models.CASCADE, null=True, blank=True)
+    diff_two_version = models.CharField(max_length=200, null=True, blank=True)
+
 
     def save(self, *args, **kwargs):
         if self.expected_software_date is not None:
@@ -167,10 +170,14 @@ class IssueSummary(models.Model):
             self.delay_by_pm = self.feedback_actual_date - self.actual_software_date
         if self.feedback_expected_date is not None:
             self.delay_by_qc = self.feedback_actual_date - self.feedback_expected_date
+        self.diff_two_version = self.actual_software_date -self.pre_version_actual_software_date
         super(IssueSummary, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.issue_analysis_version_wise
+
+
+
 
 
 class IssueAnalysis(models.Model):

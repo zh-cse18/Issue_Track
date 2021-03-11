@@ -41,6 +41,7 @@
                                 <th>Delay By</th>
                                 <th>Delay PM</th>
                                 <th> Delay QC</th>
+                                <th> New version after</th>
                                 <th> Remark</th>
 
                             </tr>
@@ -66,7 +67,9 @@
                                 <td> {{summary.delay }}</td>
                                 <td> {{summary.delay_by_pm }}</td>
                                 <td> {{summary.delay_by_qc }}</td>
+                                <td> {{summary.diff_two_version | slice:":8" }}</td>
                                 <td> {{summary.remarks }}</td>
+
 
                                 <td> </td>
                                 <td> </td>
