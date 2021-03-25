@@ -140,7 +140,7 @@ class IssueSummary(models.Model):
     issue_analysis_version_wise = models.CharField(max_length=200, null=True)
     total_issue = models.IntegerField(max_length=2000, null=True)
     expected_software_date = models.DateField(null=True, blank=True)
-    pre_version_actual_software_date =  models.DateField(null=True, blank=True)
+    pre_version_actual_software_date =  models.DateField(null=True)
     actual_software_date = models.DateField(null=True)
     feedback_expected_date = models.DateField(null=True)
     feedback_actual_date = models.DateField(null=True)
@@ -176,10 +176,11 @@ class IssueSummary(models.Model):
     def __str__(self):
         return self.issue_analysis_version_wise
 
+    issue_sum = IssueSummary.objects.all()
+    print(issue_sum)
 
 
-
-
+     
 class IssueAnalysis(models.Model):
     model = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
     issue_name = models.CharField(max_length=200, null=True)

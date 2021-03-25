@@ -23,18 +23,14 @@
                         <table class="table table-centered mb-0 test " id="grouptable">
                             <thead>
                             <tr>
-
                                 <th>Model Name</th>
                                 <th>Software Version</th>
-
-
                                 <th>Expected Date By Pm</th>
                                 <th>Actual Date By Pm</th>
                                 <th>FeedBack Expected Date  </th>
                                 <th>FeedBack Actual Date  </th>
                                 <th>Total Issue</th>
                                 <th>New Issue</th>
-
                                 <th>Re-open Issue</th>
                                 <th>closed Issue</th>
                                 <th>Is Mp</th>
@@ -54,7 +50,6 @@
                             <tr>
                                 <td> {{summary.model.modelname  }}</td>
                                 <td> {{summary.software.software_name  }}</td>
-
                                 <td> {{summary.expected_software_date }}</td>
                                 <td> {{summary.actual_software_date }}</td>
                                 <td> {{summary.feedback_expected_date }}</td>
@@ -67,16 +62,29 @@
                                 <td> {{summary.delay }}</td>
                                 <td> {{summary.delay_by_pm }}</td>
                                 <td> {{summary.delay_by_qc }}</td>
-                                <td> {{summary.diff_two_version | slice:":8" }}</td>
+                                <td>{{ summary.diff_two_version}}</td>
                                 <td> {{summary.remarks }}</td>
 
+<!--                                {% for i in  diff_two_version %}-->
+<!--                                <td>{{i}}</td>-->
+<!--                                {% endfor %}-->
+
 
                                 <td> </td>
                                 <td> </td>
+
+
                                 <td class="editbtn" data-id=" " data-type="createdby">  </td>
+
+
 
                             </tr>
                             {% endfor %}
+
+
+
+
+
                             </tbody>
                         </table>
 

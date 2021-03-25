@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a0561f16-9823-4907-892a-064c8ab01e87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data backup/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data backup/new/db.sqlite3" afterDir="false" />
+    <list default="true" id="a0561f16-9823-4907-892a-064c8ab01e87" name="Default Changelist" comment="Added a field in  Issuesammary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/issue_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/issue_summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/views.py" afterDir="false" />
@@ -173,6 +169,14 @@
       <workItem from="1612927729597" duration="341000" />
       <workItem from="1612928102302" duration="14000" />
     </task>
+    <task id="LOCAL-00001" summary="Added a field in  Issuesammary">
+      <created>1615464131422</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615464131422</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,5 +193,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added a field in  Issuesammary" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a field in  Issuesammary" />
   </component>
 </project>

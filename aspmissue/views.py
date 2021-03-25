@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date
 import xlwt
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -39,17 +39,26 @@ def index(request):
 
 def modelDetail(request, id):
     context = dict()
+    diff_two_version = []
+
     modeltest = ModelName.objects.get(pk=id)
     issue_detail = MajorIssue.objects.filter(modelname=id).values('issue')
     issue_analysis = IssueAnalysis.objects.filter(model=modeltest)
 
     issue_summary = IssueSummary.objects.filter(model=modeltest)
     print(issue_summary)
+    previous_date = date.today()
+    for actual_date in issue_summary:
+        diff_two_version.append(actual_date.actual_software_date - previous_date)
+        previous_date = actual_date.actual_software_date
 
+    for dat in diff_two_version:
+        print(dat)
 
     context['issue_summary'] = issue_summary
     context['issue_detail'] = issue_detail
     context['issue_analysis'] = issue_analysis
+    context['diff_two_version'] = diff_two_version
     return render(request, 'aspmissue/issue_summary.html', context)
 
 def marketIssue(request):
