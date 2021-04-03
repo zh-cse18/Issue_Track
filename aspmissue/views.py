@@ -69,7 +69,7 @@ def xcel_view(request, id):
     columns = ['Model Name', 'Software Version', 'Total Issue Number', 'Expected Date By Pm', 'Actual Date By Pm',
                'FeedBack Expected Date', 'FeedBack Actual Date', 'New Issue', 'Re-open Issue', 'closed Issue',
                'supplier_can_not_fixed', 'issue clsoed by pm', 'Is Mp',
-               'Delay By', 'Delay PM', 'Delay QC','Remarks']
+               'Delay By', 'Delay PM', 'Delay QC','New version after','Remarks']
 
     for col_num in range(len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
@@ -81,7 +81,7 @@ def xcel_view(request, id):
                                                              'feedback_expected_date', 'feedback_actual_date',
                                                              'new_issue', 'reopen_issue', 'closed_issue',
                                                              'supplier_can_not_fixed', 'issue_clsoed_by_pm',
-                                                             'is_mp', 'delay', 'delay_by_pm', 'delay_by_qc','remarks')
+                                                             'is_mp', 'delay', 'delay_by_pm', 'delay_by_qc','diff_two_version','remarks')
     for row in rows:
         row_num += 1
         for col_num in range(len(row)):
@@ -153,5 +153,40 @@ def weekly_report_xcel_view(request):
     wb.save(response)
     return response
 
+def xcel_view_all_model(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['content-Disposition'] = 'attachment; filename= All models report till-' + str(datetime.today()) + '.xls'
 
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('All Model')
+    row_num = 0
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+    date_xf = easyxf(num_format_str='DD/MM/YYYY')
+    columns = ['Model Name', 'Software Version', 'Total Issue Number', 'Expected Date By Pm', 'Actual Date By Pm',
+               'FeedBack Expected Date', 'FeedBack Actual Date', 'New Issue', 'Re-open Issue', 'closed Issue',
+               'supplier_can_not_fixed', 'issue clsoed by pm', 'Is Mp',
+               'Delay By', 'Delay PM', 'Delay QC','New version after','Remarks']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+    font_style = xlwt.XFStyle()
+    rows = IssueSummary.objects.all().values_list('model__modelname',
+                                                             'software__software_full_name',
+                                                             'total_issue',
+                                                             'expected_software_date', 'actual_software_date',
+                                                             'feedback_expected_date', 'feedback_actual_date',
+                                                             'new_issue', 'reopen_issue', 'closed_issue',
+                                                             'supplier_can_not_fixed', 'issue_clsoed_by_pm',
+                                                             'is_mp', 'delay', 'delay_by_pm', 'delay_by_qc','diff_two_version','remarks')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            if col_num == 3 or col_num == 4 or col_num == 5 or col_num == 6:
+                ws.write(row_num, col_num, row[col_num], date_xf)
+            else:
+                ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
+    return response
 
