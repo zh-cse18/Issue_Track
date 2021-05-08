@@ -32,16 +32,17 @@
                                 <th>Actual Date By Pm</th>
                                 <th>FeedBack Expected Date  </th>
                                 <th>FeedBack Actual Date  </th>
-                                <th>Total Issue</th>
+                                <th>Remaining Issue</th>
                                 <th>New Issue</th>
 
                                 <th>Re-open Issue</th>
-                                <th>closed Issue</th>
+                                <th>Fixed Issue</th>
                                 <th>Is Mp</th>
                                 <th>Delay By</th>
                                 <th>Delay PM</th>
-                                <th> Delay QC</th>
-                                <th> Remark</th>
+                                <th>Delay QC</th>
+                                <th>New Feedback Delay</th>
+                                <th>Remark</th>
 
                             </tr>
                             </thead>
@@ -52,20 +53,32 @@
 
                             <tr>
                                 <td> {{summary.model.modelname  }}</td>
-                                <td> {{summary.software.software_name  }}</td>
+                                <td> {{summary.issue_analysis_version_wise}}</td>
 
                                 <td> {{summary.expected_software_date }}</td>
                                 <td> {{summary.actual_software_date }}</td>
                                 <td> {{summary.feedback_expected_date }}</td>
                                 <td> {{summary.feedback_actual_date }}</td>
-                                <td> {{summary.total_issue }}</td>
+                                <td> {{summary.Remaining_issue }}</td>
                                 <td> {{summary.new_issue }}</td>
                                 <td> {{summary.reopen_issue }}</td>
-                                <td> {{summary.closed_issue }}</td>
+                                <td> {{summary.Fixed_issue }}</td>
                                 <td> {{summary.is_mp }}</td>
                                 <td> {{summary.delay }}</td>
-                                <td> {{summary.delay_by_pm }}</td>
-                                <td> {{summary.delay_by_qc }}</td>
+                                <td> {{summary.delay_by_pm | truncatechars:8 }}</td>
+                                <td> {{summary.delay_by_qc | truncatechars:8 }}</td>
+                                {% for dif in diff_two_version %}
+                                {% if forloop.counter == forloop.parentloop.counter %}
+                                {% if forloop.counter == 1 %}
+                                <td>00 day </td>
+                                {% else %}
+                                <td> {{dif | truncatechars:8 }}</td>
+                                {% endif %}
+
+                                {% endif %}
+
+                                {% endfor %}
+
                                 <td> {{summary.remarks }}</td>
 
                                 <td> </td>

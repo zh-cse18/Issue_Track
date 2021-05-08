@@ -21,7 +21,7 @@ class ModelType(models.Model):
 class ModelName(models.Model):
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, null=True)
     modeltype = models.ForeignKey(ModelType, on_delete=models.CASCADE, null=True, blank=True)
-    modelname = models.CharField(max_length=200)
+    modelname = models.CharField(max_length=200,unique=True)
     modeldescription = models.CharField(max_length=200, null=True)
     isFinished = models.BooleanField(default=False,blank=True,null=True)
 
@@ -130,35 +130,49 @@ class MajorIssue(models.Model):
 
     )
 
-    issue =MultiSelectField(max_length=200,choices=total_issue,blank=True,null=True)
+    issue =MultiSelectField(max_length=2000,choices=total_issue,blank=True,null=True)
     def __str__(self):
         return self.modelname.modelname
 
 class IssueSummary(models.Model):
     model = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
-    software = models.ForeignKey(Software, on_delete=models.CASCADE, null=True)
+    software = models.CharField(max_length=200, default = ' ')
+    software_type = (
+        ('Version Software', 'Version Software'),
+        ('Demo Software', '	Demo Software'),
+        ('Final MP SW', 'Final MP SW'),
+        ('Compatibility SW', 'Compatibility SW'),
+    )
+    software_type = models.CharField(max_length=200, choices = software_type, null=True)
     issue_analysis_version_wise = models.CharField(max_length=200, null=True)
-    total_issue = models.IntegerField(max_length=2000, null=True)
+
     expected_software_date = models.DateField(null=True, blank=True)
+
     actual_software_date = models.DateField(null=True)
     feedback_expected_date = models.DateField(null=True)
     feedback_actual_date = models.DateField(null=True)
-    new_issue = models.IntegerField(max_length=200, null=True)
-    reopen_issue = models.IntegerField(max_length=200, null=True)
+    Remaining_issue = models.IntegerField(max_length=2000, null=True, default=0)
+    new_issue = models.IntegerField(max_length=200, null=True, default=0)
+    reopen_issue = models.IntegerField(max_length=200, null=True, default=0)
+    Fixed_issue = models.IntegerField(max_length=200, null=True, default=0)
+    supplier_can_not_fixed = models.IntegerField(max_length=200, default=0)
+    issue_clsoed_by_pm = models.IntegerField(max_length=200, default=0)
     is_mp = models.BooleanField(default=False)
-    closed_issue = models.IntegerField(max_length=200, null=True)
+
     delay_team = (
         ('PM', 'PM'),
         ('QC', 'QC'),
         ('Supplier', 'Supplier'),
     )
-    supplier_can_not_fixed = models.IntegerField(max_length=200, null=True, blank=True)
-    issue_clsoed_by_pm = models.IntegerField(max_length=200, null=True, blank=True)
+
     delay = models.CharField(max_length=50, choices=delay_team, null=True, blank=True)
     remarks = models.TextField(null=True, blank=True)
     delay_by_pm = models.CharField(max_length=200, null=True, blank=True)
     delay_by_qc = models.CharField(max_length=200, null=True, blank=True)	
     mejor_issue = models.ForeignKey(MajorIssue, on_delete=models.CASCADE, null=True, blank=True)
+    existing_issue = models.IntegerField(default = 0, max_length=5, null=True, blank=True)
+
+
 
     def save(self, *args, **kwargs):
         if self.expected_software_date is not None:
@@ -167,10 +181,14 @@ class IssueSummary(models.Model):
             self.delay_by_pm = self.feedback_actual_date - self.actual_software_date
         if self.feedback_expected_date is not None:
             self.delay_by_qc = self.feedback_actual_date - self.feedback_expected_date
+        self.existing_issue = self.Remaining_issue -(self.Fixed_issue + self.supplier_can_not_fixed + self.issue_clsoed_by_pm) + (self.new_issue + self.reopen_issue)
         super(IssueSummary, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.issue_analysis_version_wise
+
+
+
 
 
 class IssueAnalysis(models.Model):

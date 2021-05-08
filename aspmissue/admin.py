@@ -11,6 +11,7 @@ class SoftwareAdmin(ImportExportModelAdmin):  # FOR ADMIN IMPORT EXPORT ONLY
 
 
 class modelnameModel(ImportExportModelAdmin):
+    list_filter = ['modelname']
     list_display = ('modelname', 'modeldescription')
     search_fields = ('modelname', 'modeldescription')
 
@@ -27,9 +28,10 @@ class IssueAnalysisModel(ImportExportModelAdmin):
 
 
 class IssueSummaryModel(ImportExportModelAdmin):
-    list_display = ['model', 'software', 'total_issue', 'expected_software_date',
+    list_display = ['model', 'software', 'Remaining_issue', 'expected_software_date',
                     'actual_software_date', 'feedback_expected_date', 'feedback_actual_date', 'new_issue',
-                    'reopen_issue','issue_clsoed_by_pm' ,'is_mp','supplier_can_not_fixed' ,'delay', 'get_software_by_pm', 'delay_software_by_qc']
+                    'reopen_issue','issue_clsoed_by_pm' ,'is_mp','supplier_can_not_fixed' ,'delay', 'get_software_by_pm', 'delay_software_by_qc',]
+    exclude = ['existing_issue']
 
     #fields =['feedback_actual_date']
 
