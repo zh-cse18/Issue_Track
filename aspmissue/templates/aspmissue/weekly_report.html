@@ -16,7 +16,7 @@
            <br>
            <br>
 
-        <input type="submit" class="form-control">
+        <button type="submit" class="form-control"> Show Result</button>
 
     </div>
 </form>
@@ -25,6 +25,8 @@
 
 {% endblock %}
 {% block WeeklyReport %}
+
+
 <form method="post" id="forminsert">
 
     <div class="row">
@@ -33,8 +35,7 @@
                 <div class="card-body">
                     <span id="success"></span>
                     <div  class="table-responsive">
-                        <input id="myInput"  type="text" placeholder="search..."  style="float: left;  background-color: #36404a; color: #909aa5; margin-bottom: 1%; border-radius: 7%;padding: 5px;" />
-
+                        <h2>Weekly Report</h2>
                         <table class="table table-centered mb-0 test " id="grouptable">
                             <thead>
                             <tr>
@@ -55,10 +56,8 @@
                                 <th>Is Mp</th>
                                 <th>Delay By</th>
                                 <th>Delay PM</th>
-                                <th> Delay QC</th>
-                                <th> Mejor Issue</th>
-                               <th> Remark</th>
-
+                                <th>Delay QC</th>
+                                <th>Remark</th>
 
                             </tr>
                             </thead>
@@ -68,8 +67,8 @@
 
 
                             <tr>
-                                <td> {{summary.model }}</td>
-                                <td> {{summary.issue_analysis_version_wise }}</td>
+                                <td> {{summary.model.modelname  }}</td>
+                                <td> {{summary.issue_analysis_version_wise}}</td>
 
                                 <td> {{summary.expected_software_date }}</td>
                                 <td> {{summary.actual_software_date }}</td>
@@ -81,14 +80,9 @@
                                 <td> {{summary.Fixed_issue }}</td>
                                 <td> {{summary.is_mp }}</td>
                                 <td> {{summary.delay }}</td>
-                                <td> {{summary.delay_by_pm }}</td>
-                                <td> {{summary.delay_by_qc }}</td>
-                                 <td> {{summary.mejor_issue.issue }}</td>
+                                <td> {{summary.delay_by_pm | truncatechars:8 }}</td>
+                                <td> {{summary.delay_by_qc | truncatechars:8 }}</td>
                                 <td> {{summary.remarks }}</td>
-
-
-
-
 
                                 <td> </td>
                                 <td> </td>
@@ -96,8 +90,6 @@
 
                             </tr>
                             {% endfor %}
-
-
                             </tbody>
                         </table>
 
@@ -108,6 +100,89 @@
     </div> <!-- end row -->
 
 </form>
+<!--<form method="post" id="forminsert">-->
+
+<!--    <div class="row">-->
+<!--        <div class="col-12">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <span id="success"></span>-->
+<!--                    <div  class="table-responsive">-->
+<!--&lt;!&ndash;                        <input id="myInput"  type="text" placeholder="search..."  style="float: left;  background-color: #36404a; color: #909aa5; margin-bottom: 1%; border-radius: 7%;padding: 5px;" />&ndash;&gt;-->
+
+<!--                        <table class="table table-centered mb-0 test " id="grouptable">-->
+<!--                            <thead>-->
+<!--                            <tr>-->
+
+<!--                                <th>Model Name</th>-->
+<!--                                <th>Software Version</th>-->
+
+
+<!--                                <th>Expected Date By Pm</th>-->
+<!--                                <th>Actual Date By Pm</th>-->
+<!--                                <th>FeedBack Expected Date  </th>-->
+<!--                                <th>FeedBack Actual Date  </th>-->
+<!--                                <th>Remaining Issue</th>-->
+<!--                                <th>New Issue</th>-->
+
+<!--                                <th>Re-open Issue</th>-->
+<!--                                <th>Fixed Issue</th>-->
+<!--                                <th>Is Mp</th>-->
+<!--                                <th>Delay By</th>-->
+<!--                                <th>Delay PM</th>-->
+<!--                                <th> Delay QC</th>-->
+<!--                                <th> Mejor Issue</th>-->
+<!--                               <th> Remark</th>-->
+
+
+<!--                            </tr>-->
+<!--                            </thead>-->
+
+<!--                            <tbody>-->
+<!--                            {% for summary in issue_summary %}-->
+
+
+<!--                            <tr>-->
+<!--                                <td> {{summary.model }}</td>-->
+<!--                                <td> {{summary.issue_analysis_version_wise }}</td>-->
+
+<!--                                <td> {{summary.expected_software_date }}</td>-->
+<!--                                <td> {{summary.actual_software_date }}</td>-->
+<!--                                <td> {{summary.feedback_expected_date }}</td>-->
+<!--                                <td> {{summary.feedback_actual_date }}</td>-->
+<!--                                <td> {{summary.Remaining_issue }}</td>-->
+<!--                                <td> {{summary.new_issue }}</td>-->
+<!--                                <td> {{summary.reopen_issue }}</td>-->
+<!--                                <td> {{summary.Fixed_issue }}</td>-->
+<!--                                <td> {{summary.is_mp }}</td>-->
+<!--                                <td> {{summary.delay }}</td>-->
+<!--                                <td> {{summary.delay_by_pm }}</td>-->
+<!--                                <td> {{summary.delay_by_qc }}</td>-->
+<!--                                 <td> {{summary.mejor_issue.issue }}</td>-->
+<!--                                <td> {{summary.remarks }}</td>-->
+
+
+
+
+
+<!--                                <td> </td>-->
+<!--                                <td> </td>-->
+<!--                                <td class="editbtn" data-id=" " data-type="createdby">  </td>-->
+
+<!--                            </tr>-->
+<!--                            {% endfor %}-->
+
+
+<!--                            </tbody>-->
+<!--                        </table>-->
+
+<!--                    </div> &lt;!&ndash; end .table-responsive&ndash;&gt;-->
+<!--                </div> &lt;!&ndash; end card-body &ndash;&gt;-->
+<!--            </div> &lt;!&ndash; end card &ndash;&gt;-->
+<!--        </div> &lt;!&ndash; end col &ndash;&gt;-->
+<!--    </div> &lt;!&ndash; end row &ndash;&gt;-->
+
+<!--</form>-->
 
         </tbody>
     </table>

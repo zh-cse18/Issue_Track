@@ -3,7 +3,7 @@ from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 
 from aspmissue.models import ModelName, IssueAnalysis, Supplier, Software, IssueSummary, SoftwareType, ModelType, \
-    MajorIssue
+    MajorIssue, AfterSalesAnalysis, FieldTestReport
 
 
 class SoftwareAdmin(ImportExportModelAdmin):  # FOR ADMIN IMPORT EXPORT ONLY
@@ -53,6 +53,8 @@ class IssueSummaryModel(ImportExportModelAdmin):
 
 
 admin.site.register(SoftwareType)
+admin.site.register(AfterSalesAnalysis)
+admin.site.register(FieldTestReport)
 admin.site.register(ModelType)
 admin.site.register(MajorIssue)
 admin.site.register(ModelName, modelnameModel)

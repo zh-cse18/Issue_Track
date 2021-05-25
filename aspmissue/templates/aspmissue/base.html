@@ -84,17 +84,38 @@
 
 
                     </li>
+                    <li>
+
+                        <span class="iconify" data-icon="mdi-view-dashboard-outline" data-inline="false"></span>
+
+                        <span>  <a href="{% url 'aspmissue:marketIssue' %}">Market Issue </a> </span>
 
 
+                    </li>
+                    <li>
+
+                        <span class="iconify" data-icon="mdi-view-dashboard-outline" data-inline="false"></span>
+
+                        <span>  <a href="{% url 'aspmissue:after_sales' %}" >After Sales Issue </a> </span>
 
 
-                    <span class="iconify" data-icon="mdi-view-dashboard-outline"></span>
-                    <a href="{% url 'aspmissue:marketIssue' %}" > Market Issue</a>
-					<br>
+                    </li>
+                     <li>
 
-              
-					 <span class="iconify" data-icon="mdi-view-dashboard-outline"></span>
-                    <a href="{% url 'aspmissue:xcel_view_all_model' %}" >Download All Model Report</a>
+                        <span class="iconify" data-icon="mdi-view-dashboard-outline" data-inline="false"></span>
+
+                        <span>  <a href="{% url 'aspmissue:field_test' %}" >Field Test Report </a> </span>
+
+
+                    </li>
+                    <li>
+
+                        <span class="iconify" data-icon="mdi-view-dashboard-outline" data-inline="false"></span>
+
+                        <span>  <a href="{% url 'aspmissue:xcel_view_all_model' %}">Download All Model Report </a> </span>
+
+
+                    </li>
 
                     <li>
                         {% block Search %}
@@ -104,10 +125,6 @@
 
 
                     </li>
-
-
-
-
 
                 </ul>
 

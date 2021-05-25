@@ -1,0 +1,80 @@
+{% extends 'aspmissue/base.html' %}
+{% load static %}
+{% block Search %}
+
+<!-- <h4>Data from {{start_date}} to {{end_date}}</h4>-->
+<form method="post" action="" class="search-bar p-3">
+    {% csrf_token%}
+    <div class="position-relative">
+        <h4>Start Date</h4>
+        <input type="date"  name = "start_date" value = {{start_date}} class="form-control" required  >
+        <br>
+        <h4>End Date</h4>
+        <input type="date" name="end_date"  value = {{end_date}} class="form-control" required >
+           <br>
+           <br>
+           <br>
+
+        <button type="submit" class="form-control"> Show Result</button>
+
+    </div>
+</form>
+<!--<button class="btn-outline-success"><a href="{% url 'aspmissue:weekly_report_xcel_view' %}"> Report</a></button>-->
+
+
+{% endblock %}
+
+
+{% block content %}
+<form method="post" id="forminsert">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <span id="success"></span>
+                    <div  class="table-responsive">
+                        <h2>Field Test Report</h2>
+                        <table class="table table-centered mb-0 test " id="grouptable">
+                            <thead>
+                            <tr>
+                                <th>Model Name</th>
+                                <th>Software Name</th>
+                                <th>Test Status</th>
+                                <th>Test Date</th>
+                                <th>Bottleneck</th>
+                                <th>Remarks</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for data in field_test_data %}
+
+                            <tr>
+                                <td> {{data.model_name.modelname  }}</td>
+                                <td> {{data.software_name}}</td>
+                                <td> {{data.ft_status}}</td>
+                                <td> {{data.ft_date}}</td>
+                                <td> {{data.bottolneck}}</td>
+                                <td> {{data.remarks}}</td>
+
+                                <td> </td>
+                                <td> </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div> <!-- end .table-responsive-->
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+</form>
+
+
+</div>
+
+{% endblock %}
+

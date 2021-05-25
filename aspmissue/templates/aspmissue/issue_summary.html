@@ -1,14 +1,6 @@
 {% extends 'aspmissue/base.html' %}
 {% load static %}
-{% block Search %}
-<form class="search-bar p-3">
-    <div class="position-relative">
-        <input type="text" class="form-control" placeholder="Search...">
-        <span class="mdi mdi-magnify"></span>
-    </div>
-</form>
 
-{% endblock %}
 
 {% block content %}
 <form method="post" id="forminsert">
@@ -19,7 +11,7 @@
                 <div class="card-body">
                     <span id="success"></span>
                     <div  class="table-responsive">
-
+                        <h2>Issue Summary</h2>
                         <table class="table table-centered mb-0 test " id="grouptable">
                             <thead>
                             <tr>
@@ -37,6 +29,7 @@
 
                                 <th>Re-open Issue</th>
                                 <th>Fixed Issue</th>
+                                <th>Existing Issue</th>
                                 <th>Is Mp</th>
                                 <th>Delay By</th>
                                 <th>Delay PM</th>
@@ -63,6 +56,7 @@
                                 <td> {{summary.new_issue }}</td>
                                 <td> {{summary.reopen_issue }}</td>
                                 <td> {{summary.Fixed_issue }}</td>
+                                <td> {{summary.existing_issue }}</td>
                                 <td> {{summary.is_mp }}</td>
                                 <td> {{summary.delay }}</td>
                                 <td> {{summary.delay_by_pm | truncatechars:8 }}</td>
@@ -74,9 +68,7 @@
                                 {% else %}
                                 <td> {{dif | truncatechars:8 }}</td>
                                 {% endif %}
-
                                 {% endif %}
-
                                 {% endfor %}
 
                                 <td> {{summary.remarks }}</td>
@@ -87,6 +79,9 @@
 
                             </tr>
                             {% endfor %}
+                            <tr><h4>Total time taken by SQC = {{ total_days_Taken_by_SQC }}</h4></tr>
+                            <tr><h4> Total time taken by PM = {{ total_days_Taken_by_PM }}</h4></tr>
+                            <tr><h4>Total time taken  = {{ total_days_Taken }}</h4></tr>
                             </tbody>
                         </table>
 
@@ -113,52 +108,42 @@
 
 <div  class="table-responsive">
 
-    <h1  style="text-align: center" > ASPM Issue</h1>
+    <h1  style="text-align: center" > After Sales Issues</h1>
 
 
     <table class="table table-centered mb-0 test " id="grouptable">
         <thead>
         <tr>
-
             <th>Model Name</th>
-            <th>Issue Name</th>
-
-            <th>imei </th>
-            <th>issue source</th>
-            <th>problem</th>
-            <th>qc findings  </th>
-            <th>hw findings</th>
-            <th>root cause</th>
-            <th>evidence</th>
-
-
-
+            <th>Feedback Date</th>
+            <th>Source Version</th>
+            <th>Target Version</th>
+            <th>Type</th>
+            <th>Validation</th>
+            <th>Issue or Improvement details</th>
+            <th>Solved or Improve</th>
+            <th>Remarks</th>
         </tr>
         </thead>
 
         <tbody>
-        {% for analysis in issue_analysis %}
-
+        {% for data in after_sales_issue_analysis %}
 
         <tr>
-            <td> {{analysis.model }}</td>
-            <td> {{analysis.issue_name }}</td>
-            <td> {{analysis.imei }}</td>
-            <td> {{analysis.issue_source }}</td>
-            <td> {{analysis.problem }}</td>
-            <td> {{analysis.qc_findings }}</td>
-            <td> {{analysis.hw_findings }}</td>
-            <td> {{analysis.root_cause }}</td>
-            <td><img style="height: 50px; width: 50px" src="{{analysis.evidence.url }}" /> </td>
+            <td> {{data.model_name.modelname  }}</td>
+            <td> {{data.feedback_date  }}</td>
+            <td> {{data.source_version }}</td>
+            <td> {{data.target_version }}</td>
+            <td> {{data.type }}</td>
+            <td> {{data.validation }}</td>
+            <td> {{data.issue_or_improvement_details }}</td>
+            <td> {{data.solved_or_improved }}</td>
+            <td> {{data.remarks }}</td>
 
             <td> </td>
             <td> </td>
-            <td class="editbtn" data-id=" " data-type="createdby">  </td>
-
         </tr>
         {% endfor %}
-
-
         </tbody>
     </table>
 

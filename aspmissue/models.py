@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 from multiselectfield import MultiSelectField
 
 # Create your models here.
@@ -151,12 +152,12 @@ class IssueSummary(models.Model):
     actual_software_date = models.DateField(null=True)
     feedback_expected_date = models.DateField(null=True)
     feedback_actual_date = models.DateField(null=True)
-    Remaining_issue = models.IntegerField(max_length=2000, null=True, default=0)
-    new_issue = models.IntegerField(max_length=200, null=True, default=0)
-    reopen_issue = models.IntegerField(max_length=200, null=True, default=0)
-    Fixed_issue = models.IntegerField(max_length=200, null=True, default=0)
-    supplier_can_not_fixed = models.IntegerField(max_length=200, default=0)
-    issue_clsoed_by_pm = models.IntegerField(max_length=200, default=0)
+    Remaining_issue = models.IntegerField( null=True, default=0)
+    new_issue = models.IntegerField(null=True, default=0)
+    reopen_issue = models.IntegerField( null=True, default=0)
+    Fixed_issue = models.IntegerField( null=True, default=0)
+    supplier_can_not_fixed = models.IntegerField( default=0)
+    issue_clsoed_by_pm = models.IntegerField( default=0)
     is_mp = models.BooleanField(default=False)
 
     delay_team = (
@@ -170,7 +171,7 @@ class IssueSummary(models.Model):
     delay_by_pm = models.CharField(max_length=200, null=True, blank=True)
     delay_by_qc = models.CharField(max_length=200, null=True, blank=True)	
     mejor_issue = models.ForeignKey(MajorIssue, on_delete=models.CASCADE, null=True, blank=True)
-    existing_issue = models.IntegerField(default = 0, max_length=5, null=True, blank=True)
+    existing_issue = models.IntegerField(default = 0, null=True, blank=True)
 
 
 
@@ -186,8 +187,6 @@ class IssueSummary(models.Model):
 
     def __str__(self):
         return self.issue_analysis_version_wise
-
-
 
 
 
@@ -208,3 +207,41 @@ class IssueAnalysis(models.Model):
         return self.issue_name + " " + self.model.modelname
 
 
+class AfterSalesAnalysis(models.Model):
+    model_name = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
+    source_version = models.CharField(max_length = 200)
+    target_version = models.CharField(max_length = 200)
+    feedback_date=models.DateField(default =date.today())
+    types =(
+        ('Improvement','Improvement' ),
+        ('Market Issue','Market Issue' ),
+    )
+    type = models.CharField(max_length=200,choices=types)
+    validations = (
+        ('Yes','Yes'),
+        ('No','No'),
+    )
+    validation = models.CharField(max_length=200,choices=validations)
+    issue_or_improvement_details = models.TextField(null = True, blank = True, help_text="Example: Update the google patch, Lock and Unlock Icon change....." )
+    solved_or_improved = models.TextField(null=True, blank = True, help_text=" Example : Update the google patch – Not Fixed ( According to ASPM realease note ). Ø Change existing default wallpaper (add new wallpaper)....")
+    remarks = models.TextField(null=True, blank = True)
+
+    def __str__(self):
+        return self.model_name.modelname
+
+
+
+class FieldTestReport(models.Model):
+    model_name = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
+    software_name = models.CharField(max_length = 200)
+    ft_result = (
+        ('Passed', 'Passed'),
+        ('Failed', 'Failed'),
+    )
+    ft_status = models.CharField(max_length = 20, choices = ft_result )
+    ft_date = models.DateField()
+    bottolneck = models.TextField( null=True, blank=True)
+    remarks = models.TextField( null=True, blank=True)
+
+    def __str__(self):
+        return self.model_name.modelname
