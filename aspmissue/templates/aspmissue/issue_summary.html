@@ -18,15 +18,12 @@
 
                                 <th>Model Name</th>
                                 <th>Software Version</th>
-
-
                                 <th>Expected Date By Pm</th>
                                 <th>Actual Date By Pm</th>
                                 <th>FeedBack Expected Date  </th>
                                 <th>FeedBack Actual Date  </th>
                                 <th>Remaining Issue</th>
                                 <th>New Issue</th>
-
                                 <th>Re-open Issue</th>
                                 <th>Fixed Issue</th>
                                 <th>Existing Issue</th>
@@ -43,10 +40,9 @@
                             <tbody>
                             {% for summary in issue_summary %}
 
-
                             <tr>
                                 <td> {{summary.model.modelname  }}</td>
-                                <td> {{summary.issue_analysis_version_wise}}</td>
+                                <td> {{summary.software.software_full_name}}</td>
 
                                 <td> {{summary.expected_software_date }}</td>
                                 <td> {{summary.actual_software_date }}</td>

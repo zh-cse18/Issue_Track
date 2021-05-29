@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0561f16-9823-4907-892a-064c8ab01e87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/after_sales_analysis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/field_test_report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data backup/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Data backup/29db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/after_sales_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/after_sales_analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/field_test_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/field_test_report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/issue_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/issue_summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/weekly_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/weekly_report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -74,15 +72,18 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/aspmissue/templates/aspmissue" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Walton\Last Aspm\Issue_Track" />
+      <recent name="E:\Walton\Last Aspm\Issue_Track\Data backup" />
       <recent name="E:\Walton\Last Aspm\Issue_Track\aspmissue\templates\aspmissue" />
       <recent name="E:\Walton\Issue_Track" />
       <recent name="E:\Walton\Issue_Track\Data backup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Walton\Last Aspm\Issue_Track\Data backup" />
       <recent name="E:\Walton\Issue_Track\Data backup" />
       <recent name="E:\Walton\Issue_Track\Data backup\new" />
       <recent name="D:\aspm\aspm\aspm" />
@@ -184,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620466002991</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added after sale s and field test feature">
+      <created>1621941780780</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621941780780</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +212,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added auto calculation version delay." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added auto calculation version delay." />
+    <MESSAGE value="Added after sale s and field test feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added after sale s and field test feature" />
   </component>
 </project>

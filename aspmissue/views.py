@@ -145,7 +145,7 @@ def weekly_report(request):
     if request.method == 'POST':
         start_date = request.POST.get('start_date')
         end_date = request.POST.get('end_date')
-        issue_summary = IssueSummary.objects.all().filter(feedback_actual_date__gte = start_date ,feedback_actual_date__lte = end_date).order_by('-id')
+        issue_summary = IssueSummary.objects.all().filter(feedback_actual_date__gte = start_date ,feedback_actual_date__lte = end_date).order_by('-feedback_actual_date')
 
         print(start_date, end_date)
         context['issue_summary'] = issue_summary
@@ -155,7 +155,7 @@ def weekly_report(request):
 
         return render(request, 'aspmissue/weekly_report.html', context)
 
-    issue_summary = IssueSummary.objects.all().order_by('-id')
+    issue_summary = IssueSummary.objects.all().order_by('-feedback_actual_date')
 
     context['issue_summary'] = issue_summary
 

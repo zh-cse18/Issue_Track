@@ -5,12 +5,14 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 class Supplier(models.Model):
     suppliername = models.CharField(max_length=200, null=True)
-    pmname = models.CharField(max_length=200, null=True, blank=True)
-    supplier_description = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.suppliername
 
+class ProjectManager(models.Model):
+    pm_name = models.CharField(max_length=200, null=True, blank=True)
+    def __str__(self):
+        return self.pm_name
 
 class ModelType(models.Model):
     typename = models.CharField(max_length=200, null=True, blank=True)
@@ -21,7 +23,7 @@ class ModelType(models.Model):
 
 class ModelName(models.Model):
     supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, null=True)
-    modeltype = models.ForeignKey(ModelType, on_delete=models.CASCADE, null=True, blank=True)
+    pm_name = models.ForeignKey(ProjectManager, on_delete=models.CASCADE, null=True)
     modelname = models.CharField(max_length=200,unique=True)
     modeldescription = models.CharField(max_length=200, null=True)
     isFinished = models.BooleanField(default=False,blank=True,null=True)
@@ -38,10 +40,7 @@ class SoftwareType(models.Model):
 
 
 class Software(models.Model):
-    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, null=True)
     modelname = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True, blank=True)
-    software_type = models.ForeignKey(SoftwareType, on_delete=models.CASCADE, null=True)
-    software_name = models.CharField(max_length=200, null=True, blank=True)
     software_full_name = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
@@ -137,7 +136,7 @@ class MajorIssue(models.Model):
 
 class IssueSummary(models.Model):
     model = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
-    software = models.CharField(max_length=200, default = ' ')
+    software = models.ForeignKey(Software, on_delete=models.CASCADE, null=True, blank =True)
     software_type = (
         ('Version Software', 'Version Software'),
         ('Demo Software', '	Demo Software'),
@@ -209,7 +208,7 @@ class IssueAnalysis(models.Model):
 
 class AfterSalesAnalysis(models.Model):
     model_name = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
-    source_version = models.CharField(max_length = 200)
+    source_version = models.ForeignKey(Software, on_delete=models.CASCADE, null=True, blank =True)
     target_version = models.CharField(max_length = 200)
     feedback_date=models.DateField(default =date.today())
     types =(
@@ -233,7 +232,7 @@ class AfterSalesAnalysis(models.Model):
 
 class FieldTestReport(models.Model):
     model_name = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
-    software_name = models.CharField(max_length = 200)
+    software_name = models.ForeignKey(Software, on_delete=models.CASCADE, null=True, blank =True)
     ft_result = (
         ('Passed', 'Passed'),
         ('Failed', 'Failed'),
