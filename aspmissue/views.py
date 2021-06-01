@@ -41,8 +41,6 @@ def index(request):
 
 def modelDetail(request, id):
     context = dict()
-    diff_two_version = []
-
     modeltest = ModelName.objects.get(pk=id)
     issue_detail = MajorIssue.objects.filter(modelname=id).values('issue')
     after_sales_issue_analysis = AfterSalesAnalysis.objects.filter(model_name=id)
@@ -51,36 +49,38 @@ def modelDetail(request, id):
     issue_summary = IssueSummary.objects.filter(model=modeltest).order_by('-feedback_actual_date')
     print(issue_summary)
 
-
-    def difTwoVersion():
-        previous_date = date.today()
-        for count, actual_date in enumerate(issue_summary):
-            if count == 0:
-                print(count)
-                diff_two_version.append(0)
-                previous_date = actual_date.feedback_actual_date
-            else:
-                diff_two_version.append(actual_date.feedback_actual_date - previous_date)
-                previous_date = actual_date.feedback_actual_date
-    difTwoVersion()
     def totalDaysBySWQc():
-        total_days_Taken_by_SQC = 0
-        for actual_date in issue_summary:
-            dif_fd_back_to_new_sw = actual_date.feedback_actual_date - actual_date.actual_software_date
-            total_days_Taken_by_SQC += int(str(dif_fd_back_to_new_sw)[:2]) +1
-            print(dif_fd_back_to_new_sw)
-        print( total_days_Taken_by_SQC +1)
+        total_days_Taken_by_SQC =0
+        al_fb_date = []
+        al_actual_sw_date = []
+        for date in issue_summary:
+            al_fb_date.append(date.feedback_actual_date)
+            al_actual_sw_date.append(date.actual_software_date)
+        loop_length = len(al_actual_sw_date)
+        for i in range(loop_length):
+            sqc_taken_time = al_fb_date[i] -  al_actual_sw_date[i]
+            if str(sqc_taken_time)[1]== ":":
+                total_days_Taken_by_SQC +=1
+            else:
+                total_days_Taken_by_SQC += int(str(sqc_taken_time)[:2]) + 1
+
         return total_days_Taken_by_SQC
 
 
     def totalDaysByPM():
-        previous_date = date.today()
         total_days_Taken_by_PM = 0
-        for  actual_date in issue_summary:
-            dif_fd_back_to_new_sw_from_pm = actual_date.actual_software_date - previous_date
-            print(str(actual_date.actual_software_date) + " - " + str(previous_date) + " = " + str(dif_fd_back_to_new_sw_from_pm) )
-            previous_date = actual_date.feedback_actual_date
-            total_days_Taken_by_PM += int(str( dif_fd_back_to_new_sw_from_pm)[:2]) -1
+        all_fb_date = []
+        all_actual_sw_date = []
+        for date in issue_summary:
+            all_fb_date.append(date.feedback_actual_date)
+            all_actual_sw_date.append(date.actual_software_date)
+        loop_length =len(all_actual_sw_date)
+        for i in range(loop_length-1):
+            dif_fd_back_to_new_sw_from_pm = all_actual_sw_date[i]- all_fb_date[i+1]
+            if str(dif_fd_back_to_new_sw_from_pm)[0]=="0":
+                pass
+            else:
+                total_days_Taken_by_PM+= int(str(dif_fd_back_to_new_sw_from_pm)[:2])-1
 
         return total_days_Taken_by_PM
 
@@ -88,7 +88,6 @@ def modelDetail(request, id):
     context['issue_summary'] = issue_summary
     context['issue_detail'] = issue_detail
     context['issue_analysis'] = issue_analysis
-    context['diff_two_version'] = diff_two_version
     context['total_days_Taken_by_PM'] = totalDaysByPM()
     context['total_days_Taken_by_SQC'] = totalDaysBySWQc()
     context['total_days_Taken'] = totalDaysBySWQc() + totalDaysByPM()

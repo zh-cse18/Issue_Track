@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a0561f16-9823-4907-892a-064c8ab01e87" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data backup/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Data backup/29db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/after_sales_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/after_sales_analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/field_test_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/field_test_report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/issue_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/issue_summary.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/templates/aspmissue/weekly_report.html" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/templates/aspmissue/weekly_report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aspmissue/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/aspmissue/views.py" afterDir="false" />
@@ -192,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621941780780</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update add new model . Found some issue yet">
+      <created>1622283163898</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622283163898</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +215,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added auto calculation version delay." />
     <MESSAGE value="Added after sale s and field test feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added after sale s and field test feature" />
+    <MESSAGE value="Update add new model . Found some issue yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update add new model . Found some issue yet" />
   </component>
 </project>
