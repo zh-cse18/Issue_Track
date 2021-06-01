@@ -244,3 +244,25 @@ class FieldTestReport(models.Model):
 
     def __str__(self):
         return self.model_name.modelname
+
+
+class OTATestReport(models.Model):
+    model_name = models.ForeignKey(ModelName, on_delete=models.CASCADE, null=True)
+    test_date = models.DateField(default=date.today())
+    source_version = models.ForeignKey(Software, on_delete=models.CASCADE, null=True, blank =True)
+    target_version = models.CharField(max_length = 200)
+    types =(
+        ('Self_OTA', 'Self_OTA'),
+        ('G_OTA', 'G_OTA'),
+    )
+    test_type = models.CharField(max_length=200,choices=types)
+    is_MP = (
+        ('N/A', 'N/A'),
+        ('Improvement SW', 'Improvement SW'),
+    )
+    is_MP_when_Test = models.CharField(max_length=200,choices=is_MP)
+    remarks = models.TextField(null=True, blank = True)
+    evidence_Uploaded_to_QC_Server = models.BooleanField(default =True)
+
+    def __str__(self):
+        return self.model_name.modelname
